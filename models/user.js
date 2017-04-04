@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       {
         associate: (models)=> {
         // associations can be defined here
-        models.User.hasOne(models.Student)
+        models.User.hasOne(models.Student,{onDelete:'CASCADE'})
         }
       },
       freezeTableName: true
