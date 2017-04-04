@@ -5,20 +5,20 @@ var models = require('../models');
 /**
  * Get all users
  */
-router.get('/', (req, res, next)=> {
+router.get('/', (req, res, next) => {
   models.User.findAll({
     attributes:{
       exclude:['password']
     }
   })
-  .then((users)=>{
+  .then((users) => {
     res.status(200).json(users);
   });
 });
 /**
  * Get user by id
  */
-router.get('/:id', (req, res, next)=> {
+router.get('/:id', (req, res, next) => {
   models.User.findById(req.params.id ,{
     attributes:{
       exclude:['password']
@@ -31,7 +31,7 @@ router.get('/:id', (req, res, next)=> {
 /**
  * Add new user.
  */
-router.post ('/', (req,res,next)=>{
+router.post ('/', (req,res,next) => {
   models.User.create({
     userName: req.body.userName,
     password: req.body.password,
@@ -41,13 +41,36 @@ router.post ('/', (req,res,next)=>{
     res.status(200).json(user)
   })
   .catch((error)=>{
-    res.status(400).end
+    res.status(400).end()
   })
 });
+
+/**
+ * Delete an user 
+ */
+router.delete('/:id',(req,res,next) => {
+  models.User.findById(req.params.id)
+  .then((user)=>{
+    if (user)
+    {
+      user.destroy()
+       .then((user)=>{
+        res.status(200).json({msg:"Removed successfully"}) 
+      })
+      .catch((error)=>{
+        res.status(400).end()  
+      })
+    }
+    else
+    {
+      res.status(404).end()  
+    }
+  })
+})
 /**
  * Update an user
  */
-router.put('/:id',(req,res,next)=>{
+router.put('/:id',(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user) {
@@ -66,6 +89,8 @@ router.put('/:id',(req,res,next)=>{
       res.status(404).end()          
     }
   })
-})
+});
+
+
 
 module.exports = router;
