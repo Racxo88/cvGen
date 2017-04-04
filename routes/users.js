@@ -31,7 +31,7 @@ router.get('/:id', (req, res, next) => {
 /**
  * Add new user.
  */
-router.post ('/', (req,res,next) => {
+router.post ('/register/', (req,res,next) => {
   models.User.create({
     userName: req.body.userName,
     password: req.body.password,
