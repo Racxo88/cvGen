@@ -21,7 +21,7 @@ router.get('/:id', (req, res, next) => {
   });
 });
 /**
- * Add new student. 
+ * Add new student from a specific user 
  */
 router.post ('/user/:id', (req,res,next) => {
   models.User.findById(req.params.id) //Look if there are an user with this id.
@@ -34,12 +34,19 @@ router.post ('/user/:id', (req,res,next) => {
         {
           console.log("Creating new student...")
           models.Student.create({
-            userName: req.body.userName,
-            password: req.body.password,
-            email: req.body.email,
+            name:req.body.name,
+            lastName: req.body.lastName,
+            birthday: req.body.birthday,
+            genre:req.body.genre,
           })
-          .then((user)=>{
-            res.status(200).json(user)
+          .then((student)=>{
+            user.setStudent(student)
+            .then(() => {
+              res.status(200).json(student)
+            })
+            .catch(() => {
+              res.status(400).end()
+            })
           })
           .catch((error)=>{
             res.status(400).end()
@@ -48,6 +55,7 @@ router.post ('/user/:id', (req,res,next) => {
         else
         {
           console.log("This user already has an student.")
+          res.status(409).end()
         }
       })
 
@@ -64,18 +72,33 @@ router.post ('/user/:id', (req,res,next) => {
 });
 
 /**
- * Delete an user 
+ * Delete the student from a specific user 
  */
-router.delete('/:id',(req,res,next) => {
+router.delete('/user/:id',(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user)
     {
-      user.destroy()
-       .then((user)=>{
-        res.status(200).json({msg:"Removed successfully"}) 
+     user.getStudent()
+       .then((student)=>{
+         if (student)
+         {
+            student.destroy()
+            .then((user)=>{
+              res.status(200).json({msg:'Removed successfully'}) 
+            })
+            .catch((error)=>{
+              res.status(400).end()  
+            })
+          }
+          else
+          {
+            console.log('User does not have student.')
+            res.status(404).end()
+          }
       })
       .catch((error)=>{
+        console.log('Imposible to remove it.')
         res.status(400).end()  
       })
     }
