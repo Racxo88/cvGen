@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         models.Student.belongsTo(models.User);
       }
-    }
+    },
+    freezeTableName:true
   });
   return Student;
 };
