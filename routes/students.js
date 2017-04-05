@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var tokenMiddle= require('../services/tokenMiddle')
+
 
 /**
  * Get all students
  */
-router.get('/', (req, res, next) => {
+router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
   models.Student.findAll( )
   .then((users) => {
     res.status(200).json(users);
@@ -14,7 +16,7 @@ router.get('/', (req, res, next) => {
 /**
  * Get student by id
  */
-router.get('/:id', (req, res, next) => {
+router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.Student.findById(req.params.id)
   .then((user) => {
     res.status(200).json(user);
@@ -23,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 /**
  * Add new student from a specific user 
  */
-router.post ('/user/:id', (req,res,next) => {
+router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
   models.User.findById(req.params.id) //Look if there are an user with this id.
   .then((user) => {
     if (user)
@@ -74,7 +76,7 @@ router.post ('/user/:id', (req,res,next) => {
 /**
  * Delete the student from a specific user 
  */
-router.delete('/user/:id',(req,res,next) => {
+router.delete('/user/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user)
@@ -111,7 +113,7 @@ router.delete('/user/:id',(req,res,next) => {
 /**
  * Update an user
  */
-router.put('/:id',(req,res,next) => {
+router.put('/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user) {

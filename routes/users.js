@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-
+var tokenService = require('../services/tokenService')
+var tokenMiddle= require('../services/tokenMiddle')
 /**
  * Get all users
  */
-router.get('/', (req, res, next) => {
+router.get('/',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.User.findAll({
     attributes:{
       exclude:['password']
@@ -18,7 +19,7 @@ router.get('/', (req, res, next) => {
 /**
  * Get user by id
  */
-router.get('/:id', (req, res, next) => {
+router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.User.findById(req.params.id ,{
     attributes:{
       exclude:['password']
@@ -48,7 +49,7 @@ router.post ('/register/', (req,res,next) => {
 /**
  * Delete an user 
  */
-router.delete('/:id',(req,res,next) => {
+router.delete('/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user)
@@ -70,7 +71,7 @@ router.delete('/:id',(req,res,next) => {
 /**
  * Update an user
  */
-router.put('/:id',(req,res,next) => {
+router.put('/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
     if (user) {
@@ -91,6 +92,30 @@ router.put('/:id',(req,res,next) => {
   })
 });
 
-
-
+/**
+ * Try to login with JWT auth.
+ */
+router.post('/login',(req,res,next) => {
+  models.User.findOne({
+      where:{
+        $and:[
+          {email:req.body.email},
+          {password: req.body.password}
+        ]
+      }
+    }).then((user)=>{
+      if (user) 
+      {
+        var token = tokenService.createToken(user)
+        res.status(200).json(token)
+      }
+      else
+      {
+        res.status(401).end()
+      }   
+    })
+    .catch((error)=> {
+      return res.status(404).end()
+  })
+});
 module.exports = router;
