@@ -3,6 +3,7 @@ var router = express.Router();
 var models = require('../models');
 var tokenService = require('../services/tokenService')
 var tokenMiddle= require('../services/tokenMiddle')
+var logger = require('../services/logger')
 /**
  * Get all users
  */
@@ -42,7 +43,8 @@ router.post ('/register/', (req,res,next) => {
     res.status(200).json(user)
   })
   .catch((error)=>{
-    res.status(400).end()
+    res.status(400).json(error)
+    logger.error('['+ new Date() + '] '+ error.errors[0].message)
   })
 });
 
