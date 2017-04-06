@@ -14,6 +14,8 @@ var app = express();
 var server = require('http').Server(app)
 var logger = require('./services/logger')
 var morgan = require('morgan')
+var compression = require('compression')
+var helmet = require('helmet')
 //var tokenMiddle = require('./tokenMiddle')
 
 // view engine setup
@@ -31,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/students',students);
+app.use(compression());
+app.use(helmet())
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
