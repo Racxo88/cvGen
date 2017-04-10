@@ -1,0 +1,19 @@
+[
+  {
+    "model":"User",
+    "data":{
+      "userName":"Racxo",
+      "password":"test",
+      "email":"test@test.com"
+    }
+  },
+  {
+    "model":"User",
+    "data":{
+      "userName":"Lizy",
+      "password":"test",
+      "email":"test2@test.com",
+      "active":false
+    }
+  }
+]

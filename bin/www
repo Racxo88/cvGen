@@ -2,7 +2,9 @@
 var models = require('../models')
 models.sequelize.sync({force: true})
 .then(() => {
-  //
+  const fixtures=require('sequelize-fixtures');
+  console.log("Loading fixtures")
+  fixtures.loadFile("./fixtures/*.json",models)
 })
 var server = require('../app').server
 server.listen(process.env.PORT || 3000, () => {
