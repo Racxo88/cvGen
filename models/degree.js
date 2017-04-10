@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     name: {type:DataTypes.STRING, allowNull:false},
     description:{type:DataTypes.STRING, allowNull:false},
     numberCourses:{type:DataTypes.INTEGER,validate:{min:1,max:10},allowNull:false},
-    cuttOffMark:{type:DataTypes.INTEGER, allowNull:false}
+    cuttOffMark:{type:DataTypes.FLOAT, allowNull:false}
   }, {
     classMethods: {
       associate: function(models) {

@@ -23,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Subject.belongsToMany(models.Subject, {through: 'AtLeastSubject', as:'atLeastSubject' }) //courses required to be in this one. 
       }
     },
+    timestamps: false,
     freezeTableName:true
   });
   return Subject;

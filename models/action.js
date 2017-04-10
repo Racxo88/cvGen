@@ -15,7 +15,9 @@ module.exports = function(sequelize, DataTypes) {
         models.Action.belongsToMany(models.Student,{through: models.StudentAction})
       }
     },
+    timestamps: false,
     freezeTableName:true
+    
   });
   return Action;
 };

@@ -13,7 +13,15 @@
       "userName":"Lizy",
       "password":"test",
       "email":"test2@test.com",
-      "active":false
+      "active":true
     }
+  },
+  {
+  "model":"User",
+  "data":{
+    "userName":"Gurtheg",
+    "password":"test",
+    "email":"test3@test.com"
+  }
   }
 ]
