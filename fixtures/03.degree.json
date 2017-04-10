@@ -7,7 +7,7 @@
         "description":"degree_description_computerScience",
         "numberCourses":4,
         "cuttOffMark":5.0
-    }
+    }    
   },
   {
     "model":"Degree",
@@ -26,7 +26,7 @@
         "name":"degree_name_dragonRyder",
         "description":"degree_description_dragonRyder",
         "numberCourses":2,
-        "cuttOffMark":3.0
+        "cuttOffMark":3.0       
     }
   },
   {
@@ -36,7 +36,7 @@
         "name":"degree_name_alchemy",
         "description":"degree_description_alchemy",
         "numberCourses":5,
-        "cuttOffMark":7.0
+        "cuttOffMark":7.0    
     }
   }
 ]

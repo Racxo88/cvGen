@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         models.FeatureType.hasMany(models.Feature)
       }
     },
+    timestamps: false,
     freezeTableName:true
   });
   return FeatureType;

@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 
       }
     },
+    timestamps: false,
     freezeTableName:true
   });
   return CurrentStatus;

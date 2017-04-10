@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Feature.belongsTo(models.FeatureType)
       }
     },
+    timestamps: false,
     freezeTableName:true
   });
   return Feature;
