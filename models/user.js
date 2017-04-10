@@ -5,8 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     password: {type:DataTypes.STRING,allowNull:false},
     email: {type:DataTypes.STRING, unique:true, allowNull:false},
     lastLogin: {type:DataTypes.DATE},
-    active:{type:DataTypes.BOOLEAN, defaultValue:true, allowNull:false}
-
+    active:{type:DataTypes.BOOLEAN, defaultValue:true, allowNull:false},
+    passMark:{type:DataTypes.FLOAT, validate:{min:0, max:10} },
+    waitDate:{type:DataTypes.DATE, allowNull:true}
   }, {
       classMethods: 
       {

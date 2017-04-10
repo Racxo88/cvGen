@@ -4,12 +4,16 @@ module.exports = function(sequelize, DataTypes) {
     name: {type:DataTypes.STRING, allowNull:false},
     lastName: {type:DataTypes.STRING, allowNull:false},
     birthday: {type:DataTypes.DATE, allowNull:false},
-    genre: {type:DataTypes.STRING, allowNull:false, validate:{isIn:[['male','female','trans']]}}
+    genre: {type:DataTypes.STRING, allowNull:false, validate:{isIn:[['male','female','trans']]}},
+    money:{type:DataTypes.FLOAT,validate:{min:0},defaultValue:0},
+    academicPoints:{type:DataTypes.INTEGER, validate:{min:0},defaultValue:0},
+    socialPoints:{type:DataTypes.INTEGER, validate:{min:0},defaultValue:0},
+    workPoints:{type:DataTypes.INTEGER, validate:{min:0},defaultValue:0}
   },{
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.Student.belongsTo(models.User);
+        models.Student.belongsTo(models.User)
       }
     },
     freezeTableName:true
