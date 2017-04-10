@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var ActionType = sequelize.define('ActionType', {
+  var Difficulty = sequelize.define('Difficulty', {
     name:{type:DataTypes.STRING, allowNull:false},
     description:{type:DataTypes.STRING, allowNull:false},
   }, {
@@ -9,8 +9,8 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       }
     },
-    timestamps:false,
-    freezeTableName:true
+      timestamps: false,
+      freezeTableName:true
   });
-  return ActionType;
+  return Difficulty;
 };

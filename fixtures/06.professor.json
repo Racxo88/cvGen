@@ -1,0 +1,20 @@
+[
+  {
+    "model":"Professor",
+    "data":{
+      "name":"Quim",
+      "lastName":"Raka",
+      "genre":"male",
+      "professorPoints":1000
+    }
+  },
+  {
+    "model":"Professor",
+    "data":{
+      "name":"Teresa",
+      "lastName":"de Calcuta",
+      "genre":"female",
+      "professorPoints":1200
+    }
+  }
+]

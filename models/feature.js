@@ -15,6 +15,8 @@ module.exports = function(sequelize, DataTypes) {
         models.Feature.belongsToMany(models.Professor,{through:'ProfessorFeature', as:'ProfessorFeature'})
         models.Feature.belongsToMany(models.Student,{through:'StudentFeature', as:'StudentFeature'})
         models.Feature.belongsTo(models.FeatureType)
+        models.Feature.belongsToMany(models.Feature, {through: 'BlockFeature', as:'blockFeature' }) //Features required to be in this one.
+
       }
     },
     timestamps: false,

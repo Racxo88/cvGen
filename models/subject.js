@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         {
           freezeTableName:true
         })
+        models.Subject.belongsTo(models.Difficulty)
         models.Subject.belongsToMany(models.Professor,{through:ProfessorSubject})
         models.Subject.belongsToMany(models.Student,{through:models.StudentSubject})
         models.Subject.belongsTo(models.Course)

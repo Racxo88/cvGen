@@ -1,0 +1,66 @@
+[
+  {
+    "model":"Subject",
+    "data":{
+      "name":"subject_name_maths1" ,
+      "description":"subject_description_maths1" ,
+      "price": 50,
+      "studentPoints":5,
+      "Difficulty":
+      {
+        "name":"difficulty_name_easy"
+      },
+      "Course":{
+        "name":"course_name_computerScience1"
+      }
+    }
+  },
+  {
+    "model":"Subject",
+    "data":{
+      "name":"subject_name_maths2" ,
+      "description":"subject_description_maths2" ,
+      "price": 50,
+      "studentPoints":10,
+      "Difficulty":
+      {
+        "name":"difficulty_name_medium"
+      },
+      "Course":{
+        "name":"course_name_computerScience2"
+      }
+    }
+  },
+  {
+    "model":"Subject",
+    "data":{
+      "name":"subject_name_ride1" ,
+      "description":"subject_description_ride1" ,
+      "price": 100,
+      "studentPoints":5,
+      "Difficulty":
+      {
+        "name":"difficulty_name_mary"
+      },
+      "Course":{
+        "name":"course_name_dragonRyder1"
+      }
+    }
+  },
+  {
+    "model":"Subject",
+    "data":{
+      "name":"subject_name_makegold" ,
+      "description":"subject_description_makegold" ,
+      "price": 1000,
+      "studentPoints":100,
+      "Difficulty":
+      {
+        "name":"difficulty_name_wow"
+      },
+      "Course":{
+        "name":"course_name_alchemy5"
+      }
+    }
+  }
+]
