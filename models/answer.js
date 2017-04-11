@@ -9,6 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        models.Answer.belongsTo(models.QuestionType)
+        models.Answer.belongsTo(models.Question)
       }
     },
     timestamps: false,
