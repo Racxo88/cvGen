@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     workPoints:{type:DataTypes.INTEGER, allowNull:false, validate:{min:0}},
     professorPoints:{type:DataTypes.INTEGER, allowNull:false, validate:{min:0}},
     money:{type:DataTypes.FLOAT, allowNull:false, validate:{min:0}},
+    image:{type:DataTypes.STRING, allowNull:true}
   }, {
     classMethods: {
       associate: function(models) {

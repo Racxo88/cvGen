@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     name: {type:DataTypes.STRING, allowNull:false},
     description:{type:DataTypes.STRING, allowNull:false},
     numYear:{type:DataTypes.INTEGER, validate:{min:1, max:10}, defaultValue:1, allowNull:false},
-
+    image:{type:DataTypes.STRING, allowNull:true}
   }, {
     classMethods: {
       associate: function(models) {
