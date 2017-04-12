@@ -19,10 +19,9 @@ router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
  * Get action by id
  */
 router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
-  models.Action.findById(req.params.id)
-  .then((action) => {
-    res.status(200).json(action);
-  });
+  models.Action.find({where:{id:req.params.id},include:[{model:models.Question,include:[models.Answer]}]}).then((actions)=>{
+                res.status(200).json(actions)
+              })     
 });
 
 /**
@@ -85,5 +84,31 @@ router.post('/random/type/:id/:subId?',tokenMiddle.ensureAuthenticated,(req,res,
         res.status(400).json({msg:'Invalid combination.'})
       }
 });
+/**
+ * Delete action by id
+ */
+router.delete('/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
+  models.Action.findById(req.params.id)
+  .then((action)=>{
+    if (action)
+    {
+      action.destroy()
+      .then((action)=>{
+        res.status(200).json({msg:'Removed successfully'}) 
+      })
+      .catch((error)=>{
+        res.status(400).end()  
+      })
+    }
+    else
+    {
+      res.status(404).end()
+    }
+  })
+  .catch((error)=>{
+    console.log('Imposible to remove it.')
+    res.status(400).end()  
+  })
+})
 
 module.exports=router
