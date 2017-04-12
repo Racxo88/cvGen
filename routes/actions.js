@@ -63,7 +63,7 @@ router.post('/random/type/:id/:subId?',tokenMiddle.ensureAuthenticated,(req,res,
             }).then((action)=>{
               action.addQuestions(questions)
               console.log('Social='+socialPoints+'.Work='+workPoints+'.Academic='+academicPoints)
-              res.status(200).json(questions)
+              res.status(200).json(action)
             })
             .catch((error)=>{
               console.log(error)
