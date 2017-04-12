@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Action.belongsTo(models.ActionType)
         models.Action.belongsTo(models.Subject)
         models.Action.belongsToMany(models.Student,{through: models.StudentAction})
+        models.Action.belongsToMany(models.Question,{through: 'ActionQuestion'})
       }
     },
     timestamps: false,

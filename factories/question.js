@@ -29,7 +29,6 @@ build (sequelize) {
     var questionType = factory.questionType();
     var questionData = {
       questionText: 'question_text_'+type+'_'+questionType+(subjectId!==undefined?'_'+subjectId:'')+"_"+number,
-      description: 'question_description_'+type+'_'+questionType+(subjectId!==undefined?'_'+subjectId:''),
       socialPoints: factory.points(),
       academicPoints:factory.points(),
       workPoints:factory.points(),

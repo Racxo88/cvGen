@@ -18,10 +18,42 @@ router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
  */
 router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.Student.findById(req.params.id)
-  .then((user) => {
-    res.status(200).json(user);
+  .then((student) => {
+    res.status(200).json(student);
   });
 });
+
+/**
+ * Get student by user id
+ */
+router.get('/user/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
+  models.User.findById(req.params.id)
+  .then((user) => {
+    if(user)
+    {
+      user.getStudent()
+      .then((student) =>{
+        if (student)
+        {
+          res.status(200).json(student);
+        }
+        else
+        {
+          res.status(404).json({msg:'student not found'})
+        }
+      })
+      .catch((error)=>{
+        res.status(400).json(error);
+      })
+    }
+    else
+    {
+      res.status(404).json({msg:'user not found'})
+    }
+  });
+});
+
+
 /**
  * Add new student from a specific user 
  */
@@ -111,25 +143,46 @@ router.delete('/user/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   })
 })
 /**
- * Update an user
+ * Update an student by user id
  */
-router.put('/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
+router.put('/user/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
   models.User.findById(req.params.id)
   .then((user)=>{
-    if (user) {
-      user.userName = req.body.userName ? req.body.userName : user.userName;
-      user.password = req.body.password ? req.body.password : user.password;
-      user.email = req.body.email ? req.body.email : user.email;
-      user.save()
-      .then((user)=>{
-        res.status(200).json({msg:"Success"}) 
+    if (user)
+    {
+     user.getStudent()
+      .then((student)=>{
+        if (student) 
+        {
+          student.name = req.body.name ? req.body.name : student.name;
+          student.lastName = req.body.lastName ? req.body.lastName : student.lastName;
+          student.birthday = req.body.birthday ? req.body.birthday : student.birthday;
+          student.genre = req.body.genre ? req.body.genre : student.genre;
+          student.money = req.body.money ? req.body.money : student.money;
+          student.academicPoints = req.body.academicPoints ? req.body.academicPoints : student.academicPoints;
+          student.socialPoints = req.body.socialPoints ? req.body.socialPoints : student.socialPoints;
+          student.workPoints = req.body.workPoints ? req.body.workPoints : student.workPoints;
+          student.save()
+          .then((student)=>{
+            res.status(200).json(student) 
+          })
+          .catch((error)=>{
+            res.status(400).end()        
+          })
+        }
+        else 
+        {
+          res.status(404).end()          
+        }
       })
       .catch((error)=>{
-        res.status(400).end()        
+        console.log('Imposible to update it.')
+        res.status(400).end()  
       })
     }
-    else {
-      res.status(404).end()          
+    else
+    {
+      res.status(404).end()  
     }
   })
 });
