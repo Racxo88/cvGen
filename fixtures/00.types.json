@@ -117,9 +117,19 @@
       "name":"questionType_name_truefalse",
       "description":"questionType_description_truefalse"
     }
+  },
+   {
+    "model":"AvatarType",
+    "data":{
+      "name":"AvatarType_name_student",
+      "description":"AvatarType_description_student"
+    }
+  },
+   {
+    "model":"AvatarType",
+    "data":{
+      "name":"AvatarType_name_professor",
+      "description":"AvatarType_description_professor"
+    }
   }
-  
-
-
-
 ]
