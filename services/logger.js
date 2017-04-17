@@ -11,15 +11,11 @@ var logger= new winston.Logger({
         new winston.transports.File({
           level:"info",
           filename:"./logs/app.log",
-          maxsize:104857,
-          maxFiles:10,
-          colorize:false,
           json:true
         }),
         new winston.transports.Console({
           level:'debug',
           handleExceptions: true,
-          json: false,
           colorize: true
         })
     ],
@@ -27,8 +23,3 @@ var logger= new winston.Logger({
 });
 
 module.exports=logger
-module.exports.stream= {
-  write: function (message,encoding){
-    logger.info(message)
-  }
-};

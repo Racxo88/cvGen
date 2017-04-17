@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 logger.debug("Overriding 'Express' logger");
-app.use(morgan('common',{ "stream": logger.stream }));
+app.use(morgan('common',{ 'stream': {write: (message)=>logger.info(message)} }));
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
