@@ -20,7 +20,14 @@ router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
  */
 router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.Action.find({where:{id:req.params.id},include:[{model:models.Question,include:[models.Answer]}]}).then((actions)=>{
-                res.status(200).json(actions)
+                if (actions)
+                {
+                  res.status(200).json(actions)
+                }
+                else
+                {
+                  res.status(404).json({msg:'Action not found'})
+                }
               })     
 });
 
