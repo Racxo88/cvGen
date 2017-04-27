@@ -9,7 +9,7 @@ if(!fs.existsSync('logs'))
 var logger= new winston.Logger({
     transports:[
         new winston.transports.File({
-          level:"info",
+          level:"warning",
           filename:"./logs/app.log",
           maxsize:104857,
           maxFiles:10,
@@ -20,7 +20,8 @@ var logger= new winston.Logger({
           level:'debug',
           handleExceptions: true,
           json: false,
-          colorize: true
+          colorize: true,
+          silent: true
         })
     ],
     exitOnError: false

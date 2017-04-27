@@ -17,6 +17,7 @@ var logger = require('./services/logger')
 var morgan = require('morgan')
 var compression = require('compression')
 var helmet = require('helmet')
+var cors = require('cors')
 //var tokenMiddle = require('./tokenMiddle')
 
 // view engine setup
@@ -26,11 +27,11 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //app.use(logger('dev'));
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/students',students);
