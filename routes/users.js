@@ -111,7 +111,7 @@ router.post('/login',(req,res,next) => {
         if(user.active)
         {
         var token = tokenService.createToken(user)
-        res.status(200).json({token:token})
+        res.status(200).json({token:token, userId:user.id})
         }
         else
         {
