@@ -72,6 +72,7 @@ router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
             lastName: req.body.lastName,
             birthday: req.body.birthday,
             genre:req.body.genre,
+            country:req.body.country
           })
           .then((student)=>{
             user.setStudent(student)
@@ -162,6 +163,7 @@ router.put('/user/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
           student.academicPoints = req.body.academicPoints ? req.body.academicPoints : student.academicPoints;
           student.socialPoints = req.body.socialPoints ? req.body.socialPoints : student.socialPoints;
           student.workPoints = req.body.workPoints ? req.body.workPoints : student.workPoints;
+          student.country = req.body.country ? req.body.country : student.country;
           student.save()
           .then((student)=>{
             res.status(200).json(student) 

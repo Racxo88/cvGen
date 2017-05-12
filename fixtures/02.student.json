@@ -3,6 +3,7 @@
     "model":"Student",
     "data":{
       "name":"Racxo",
+      "country":"Spain",
       "lastName":"test",
       "birthday":"1988-06-17",
       "genre":"male",
@@ -12,20 +13,5 @@
         "id":1
       }
     }
-  },
-   {
-    "model":"Student",
-    "data":{
-      "name":"Lizy",
-      "lastName":"test",
-      "birthday":"1988-08-27",
-      "genre":"female",
-      "money":2000.50,
-      "academicPoints":100,
-      "User":
-      {
-        "id":2
-      }
-    }
-   }
+  }
 ]
