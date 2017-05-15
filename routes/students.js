@@ -72,7 +72,8 @@ router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
             lastName: req.body.lastName,
             birthday: req.body.birthday,
             genre:req.body.genre,
-            country:req.body.country
+            country:req.body.country,
+            money: req.body.money ? req.body.money : 0
           })
           .then((student)=>{
             user.setStudent(student)
