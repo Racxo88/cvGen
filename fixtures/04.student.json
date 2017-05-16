@@ -1,0 +1,35 @@
+[
+  {
+    "model":"Student",
+    "data":{
+      "name":"Racxo",
+      "country":"Spain",
+      "lastName":"test",
+      "birthday":"1988-06-17",
+      "genre":"male",
+      "money":1000,
+      "User":
+      {
+        "id":1
+      },
+      "Avatar":
+      {
+        "id":10
+      },
+      "Avatars": [
+        {
+          "id":10,
+          "_through":{
+            "active":true
+          }
+        },
+        {
+          "id":20,
+          "_through":{
+            "active":false
+          }
+        }
+      ]
+    }
+  }
+]

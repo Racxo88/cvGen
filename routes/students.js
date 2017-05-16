@@ -8,16 +8,22 @@ var tokenMiddle= require('../services/tokenMiddle')
  * Get all students
  */
 router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
-  models.Student.findAll( )
-  .then((users) => {
-    res.status(200).json(users);
+  models.Student.findAll({include: [
+    {model: Avatar, required:true}
+  ]
+} )
+  .then((students) => {
+    res.status(200).json(students);
   });
 });
 /**
  * Get student by id
  */
 router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
-  models.Student.findById(req.params.id)
+  models.Student.findById(req.params.id,{include: [
+    {model: Avatar, required:true}
+  ]
+})
   .then((student) => {
     res.status(200).json(student);
   });
@@ -31,7 +37,10 @@ router.get('/user/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   .then((user) => {
     if(user)
     {
-      user.getStudent()
+      user.getStudent({include: [
+    {model: models.Avatar}
+  ]
+})
       .then((student) =>{
         if (student)
         {
@@ -76,6 +85,7 @@ router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
             money: req.body.money ? req.body.money : 0
           })
           .then((student)=>{
+          student.setAvatar(20)  
             user.setStudent(student)
             .then(() => {
               res.status(200).json(student)
