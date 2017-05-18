@@ -85,13 +85,17 @@ router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
             money: req.body.money ? req.body.money : 0
           })
           .then((student)=>{
-          student.setAvatar(20)  
-            user.setStudent(student)
-            .then(() => {
-              res.status(200).json(student)
-            })
-            .catch(() => {
-              res.status(400).end()
+            models.Avatar.findAndCountAll({where: {genre:req.body.genre}})
+            .then((result) => {
+              var randomNumber = Math.round(Math.random()*(result.count-1))
+              student.setAvatar(result.rows[randomNumber].id)  
+              user.setStudent(student)
+              .then(() => {
+                res.status(200).json(student)
+              })
+              .catch(() => {
+                res.status(400).end()
+              })
             })
           })
           .catch((error)=>{

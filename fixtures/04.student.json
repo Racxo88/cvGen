@@ -14,22 +14,9 @@
       },
       "Avatar":
       {
-        "id":10
+        "id":13
       },
-      "Avatars": [
-        {
-          "id":10,
-          "_through":{
-            "active":true
-          }
-        },
-        {
-          "id":20,
-          "_through":{
-            "active":false
-          }
-        }
-      ]
+      "Avatars": [10,20,13]
     }
   }
 ]

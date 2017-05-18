@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.Avatar.belongsTo(models.AvatarType)
-        models.Avatar.belongsToMany(models.Student,{through: models.StudentAvatar})
+        models.Avatar.belongsToMany(models.Student, {through: 'StudentAvatar'})
       }
     },
     timestamps:false,
