@@ -16,7 +16,20 @@
       {
         "id":13
       },
-      "Avatars": [10,20,13]
+      "Avatars": [10,20,13],
+      "Degrees":[
+        {"id":1,
+        "_through": {
+            "CurrentStatusId":1
+        }
+        },
+        {"id":2,
+        "_through": {
+            "year": 2017,
+            "CurrentStatusId":2
+        } 
+        }
+        ]
     }
   }
 ]

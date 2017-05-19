@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         models.Student.belongsTo(models.User)
         models.Student.belongsTo(models.Avatar)
+        models.Student.belongsToMany(models.Degree, {through: models.StudentDegree})
         models.Student.belongsToMany(models.Avatar, {through: 'StudentAvatar'})
       }
     },
