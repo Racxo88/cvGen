@@ -9,7 +9,7 @@ var tokenMiddle= require('../services/tokenMiddle')
  */
 router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
   models.Student.findAll({include: [
-    {model: Avatar, required:true}
+    {model: models.Avatar, required:true}
   ]
 } )
   .then((students) => {
@@ -21,7 +21,7 @@ router.get('/',tokenMiddle.ensureAuthenticated,(req, res, next) => {
  */
 router.get('/:id',tokenMiddle.ensureAuthenticated, (req, res, next) => {
   models.Student.findById(req.params.id,{include: [
-    {model: Avatar, required:true}
+    {model: models.Avatar, required:true}
   ]
 })
   .then((student) => {
