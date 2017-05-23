@@ -6,7 +6,8 @@
         "name":"degree_name_computerScience",
         "description":"degree_description_computerScience",
         "numberCourses":4,
-        "cuttOffMark":5.0
+        "cuttOffMark":5.0,
+        "image":"computer.jpg"
     }    
   },
   {
@@ -16,7 +17,8 @@
         "name":"degree_name_asian",
         "description":"degree_name_asian",
         "numberCourses":3,
-        "cuttOffMark":6.0
+        "cuttOffMark":6.0,
+        "image":"chino.png"
     }
   },
   {
@@ -26,7 +28,8 @@
         "name":"degree_name_dragonRyder",
         "description":"degree_description_dragonRyder",
         "numberCourses":2,
-        "cuttOffMark":3.0       
+        "cuttOffMark":3.0,
+        "image":"dragon.png"
     }
   },
   {
@@ -36,7 +39,8 @@
         "name":"degree_name_alchemy",
         "description":"degree_description_alchemy",
         "numberCourses":5,
-        "cuttOffMark":7.0    
+        "cuttOffMark":7.0,
+        "image":"alchemy.jpg"    
     }
   }
 ]

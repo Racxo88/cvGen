@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var tokenMiddle= require('../services/tokenMiddle')
-
-
+var sequelize = require('sequelize')
 /**
  * Get all degrees
  */
@@ -98,7 +97,25 @@ router.get('/student/:id',tokenMiddle.ensureAuthenticated,(req, res, next) => {
 /**
  * Get all degrees not buy by student
  */
-//router.get('/student/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
-//})
+router.get('/nostudent/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
+ models.StudentDegree.findAll({attributes:['DegreeId'], where: {StudentId:req.params.id}})
+.then((degrees) => {
+  var ids=degrees.map((degree)=>degree.DegreeId)
+  if (ids.length>0)
+  {
+    models.Degree.findAll({where: {id: {$notIn:ids}}})
+    .then((nodegrees) =>{
+      res.status(200).json(nodegrees);
+    })
+  }
+  else
+  {
+     models.Degree.findAll()
+    .then((nodegrees) =>{
+      res.status(200).json(nodegrees);
+    })
+  }
+});
+})
 
 module.exports = router;

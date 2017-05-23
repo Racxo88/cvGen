@@ -36,11 +36,11 @@ var factory = {
   insert (numMale, numFemale, numOther, sequelize) {
     var avatars = [];
     for (var i = 0; i < numMale; i++) {
-      avatars=avatars.concat(factory.build(sequelize,'F'));
+      avatars=avatars.concat(factory.build(sequelize,'M'));
     }
     factory.count=1;
     for (var i = 0; i < numFemale; i++) {
-      avatars=avatars.concat(factory.build(sequelize, 'M'));
+      avatars=avatars.concat(factory.build(sequelize, 'F'));
     }
     factory.count=1;
     for (var i = 0; i < numOther; i++) {

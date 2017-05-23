@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "arr-pluck": "^0.1.0",
     "body-parser": "~1.17.1",
     "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
