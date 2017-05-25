@@ -82,7 +82,7 @@ router.post ('/user/:id',tokenMiddle.ensureAuthenticated, (req,res,next) => {
             birthday: req.body.birthday,
             genre:req.body.genre,
             country:req.body.country,
-            money: req.body.money ? req.body.money : 0
+            money: 10000
           })
           .then((student)=>{
             models.Avatar.findAndCountAll({where: {genre:req.body.genre}})

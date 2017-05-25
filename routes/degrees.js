@@ -35,7 +35,7 @@ router.post ('/',tokenMiddle.ensureAuthenticated, (req,res,next) => {
         name:req.body.name,
         description: req.body.description,
         numberCourses: req.body.numberCourses,
-        cuttOffMark:req.body.cuttOffMark,
+        money:req.body.money,
         image: req.body.image ? req.body.image : null
       })
       .then((degree) => {
@@ -116,6 +116,18 @@ router.get('/nostudent/:id',tokenMiddle.ensureAuthenticated,(req,res,next) => {
     })
   }
 });
+})
+router.post('/student/:id',tokenMiddle.ensureAuthenticated,(req, res, next) => {
+  models.Student.findById(req.params.id)
+  .then((student) => {
+    models.Degree.findById(req.body.id)
+    .then((degree) => {
+      student.addDegree(degree, {
+          CurrentStatusId:1
+      })
+      res.status(200).end()
+    })
+  })
 })
 
 module.exports = router;

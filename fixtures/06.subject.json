@@ -10,8 +10,8 @@
       {
         "name":"difficulty_name_easy"
       },
-      "Course":{
-        "name":"course_name_computerScience1"
+      "Degree":{
+        "name":"degree_name_computerScience"
       }
     }
   },
@@ -26,8 +26,8 @@
       {
         "name":"difficulty_name_medium"
       },
-      "Course":{
-        "name":"course_name_computerScience2"
+      "Degree":{
+        "name":"degree_name_computerScience"
       }
     }
   },
@@ -42,8 +42,8 @@
       {
         "name":"difficulty_name_mary"
       },
-      "Course":{
-        "name":"course_name_dragonRyder1"
+      "Degree":{
+        "name":"degree_name_dragonRyder"
       }
     }
   },
@@ -58,8 +58,8 @@
       {
         "name":"difficulty_name_wow"
       },
-      "Course":{
-        "name":"course_name_alchemy5"
+      "Degree":{
+        "name":"degree_name_alchemy"
       }
     }
   }

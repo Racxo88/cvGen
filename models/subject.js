@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Subject.belongsTo(models.Difficulty)
         models.Subject.belongsToMany(models.Professor,{through:ProfessorSubject})
         models.Subject.belongsToMany(models.Student,{through:models.StudentSubject})
-        models.Subject.belongsTo(models.Course)
+        models.Subject.belongsTo(models.Degree)
         models.Subject.belongsToMany(models.Subject, {through: 'BlockSubject', as:'blockSubject' }) //Subjects required to be in this one.
         models.Subject.belongsToMany(models.Subject, {through: 'AtLeastSubject', as:'atLeastSubject' }) //courses required to be in this one. 
       }
