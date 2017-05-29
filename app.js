@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var students = require('./routes/students')
 var actions = require('./routes/actions')
 var degrees = require('./routes/degrees')
+var subjects = require ('./routes/subjects')
 
 var app = express();
 var server = require('http').Server(app)
@@ -38,6 +39,8 @@ app.use('/users', users);
 app.use('/students',students);
 app.use('/actions', actions)
 app.use('/degrees',degrees)
+app.use('/subjects',subjects)
+
 app.use(compression());
 app.use(helmet())
 // catch 404 and forward to error handler

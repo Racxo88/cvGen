@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Subject = sequelize.define('Subject', {
     name: {type:DataTypes.STRING, allowNull:false},
     description:{type:DataTypes.STRING, allowNull:false},
-    price:{type:DataTypes.FLOAT, validate:{min:0}, allowNull:false},
+    money:{type:DataTypes.FLOAT, validate:{min:0}, allowNull:false},
     studentPoints:{type:DataTypes.INTEGER, validate:{min:1},allowNull:false},//Max of studentPoints for the highest mark.
     image:{type:DataTypes.STRING, allowNull:true} 
   }, {
